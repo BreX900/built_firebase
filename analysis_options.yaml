@@ -1,0 +1,15 @@
+include: package:pedantic/analysis_options.yaml
+
+analyzer:
+  errors:
+    missing_required_param: warning
+
+  exclude:
+    - lib/generated
+    - lib/l10n
+    - lib/generated_plugin_registrant.dart
+
+linter:
+  rules:
+    prefer_relative_imports: false
+    always_use_package_imports: true
