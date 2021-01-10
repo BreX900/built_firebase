@@ -1,6 +1,6 @@
-import 'package:built_firebase/src/GeoPoint.dart';
 import 'package:built_value/serializer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' as fs;
+import 'package:pure_extensions/pure_extensions.dart' show GeoPoint;
 
 class GeoPointConfig {
   final Type type;
