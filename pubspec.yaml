@@ -1,6 +1,6 @@
 name: built_firebase
 description: Serializers and built values for services inherent to firebase ( cloud firestore | messaging )
-version: 0.1.0
+version: 1.0.0
 repository: https://github.com/BreX900/flutter_value_bloc/tree/master/value_bloc
 issue_tracker: https://github.com/BreX900/flutter_value_bloc/issues
 homepage: https://github.com/BreX900/flutter_value_bloc/
@@ -8,29 +8,25 @@ homepage: https://github.com/BreX900/flutter_value_bloc/
 # flutter pub publish --dry-run
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
-  pure_extensions: ^2.0.2
+  pure_extensions: ^3.0.0
 
-  built_collection: ^4.3.2
-  built_value: ^7.1.0
+  built_collection: ^5.0.0
+  built_value: ^8.0.5
 
-  cloud_firestore: ^0.14.4
+  cloud_firestore: ^1.0.7
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  analyzer: ^0.39.14
-
   # flutter packages pub run build_runner build --delete-conflicting-outputs
   # flutter packages pub run build_runner watch --delete-conflicting-outputs
-  build_runner: ^1.10.2
-  built_value_generator: ^7.1.0
-
-  test: ^1.15.7
+  build_runner: ^1.0.0
+  built_value_generator: ^8.0.5

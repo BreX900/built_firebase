@@ -2,7 +2,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'MessagePayload.g.dart';
+part 'message_payload.g.dart';
 
 /// Interface representing a Firebase Cloud Messaging message payload. One or
 /// both of the `data` and `notification` keys are required.
@@ -13,8 +13,7 @@ part 'MessagePayload.g.dart';
 @BuiltValue(instantiable: false)
 abstract class MessagePayloadRule<Data> {
   /// The notification message payload.
-  @nullable
-  NotificationPayload get notification;
+  NotificationPayload? get notification;
 
   MessagePayloadRule rebuild(Function(MessagePayloadRuleBuilder b) updates);
   MessagePayloadRuleBuilder toBuilder();
@@ -28,12 +27,11 @@ abstract class BasicMessagePayload
 
   BasicMessagePayload._();
 
-  factory BasicMessagePayload([void Function(BasicMessagePayloadBuilder b) updates]) =
+  factory BasicMessagePayload([void Function(BasicMessagePayloadBuilder b)? updates]) =
       _$BasicMessagePayload;
 
   /// The data message payload.
-  @nullable
-  BuiltMap<String, String> get data;
+  BuiltMap<String, String>? get data;
 }
 
 /// A custom built value for [MessagePayloadRule]
@@ -44,12 +42,11 @@ abstract class MessagePayload<Data>
 
   MessagePayload._();
 
-  factory MessagePayload([void Function(MessagePayloadBuilder<Data> b) updates]) =
+  factory MessagePayload([void Function(MessagePayloadBuilder<Data> b)? updates]) =
       _$MessagePayload<Data>;
 
   /// The data message payload.
-  @nullable
-  Data get data;
+  Data? get data;
 }
 
 /// Interface representing an FCM legacy API notification message payload.
@@ -65,7 +62,7 @@ abstract class NotificationPayload
 
   NotificationPayload._();
 
-  factory NotificationPayload([void Function(NotificationPayloadBuilder b) updates]) =
+  factory NotificationPayload([void Function(NotificationPayloadBuilder b)? updates]) =
       _$NotificationPayload;
 
   /// Identifier used to replace existing notifications in the notification drawer.
@@ -76,14 +73,12 @@ abstract class NotificationPayload
   /// the new notification replaces the existing one in the notification drawer.
   ///
   /// **Platforms:** Android
-  @nullable
-  String get tag;
+  String? get tag;
 
   /// The notification's body text.
   ///
   /// **Platforms:** iOS, Android, Web
-  @nullable
-  String get body;
+  String? get body;
 
   /// The notification's icon.
   ///
@@ -94,8 +89,7 @@ abstract class NotificationPayload
   /// **Web:** The URL to use for the notification's icon.
   ///
   /// **Platforms:** Android, Web
-  @nullable
-  String get icon;
+  String? get icon;
 
   /// The value of the badge on the home screen app icon.
   ///
@@ -104,14 +98,12 @@ abstract class NotificationPayload
   /// If set to `0`, the badge is removed.
   ///
   /// **Platforms:** iOS
-  @nullable
-  String get badge;
+  String? get badge;
 
   /// The notification icon's color, expressed in `#rrggbb` format.
   ///
   /// **Platforms:** Android
-  @nullable
-  String get color;
+  String? get color;
 
   /// The sound to be played when the device receives a notification. Supports
   /// "default" for the default notification sound of the device or the filename of a
@@ -119,14 +111,12 @@ abstract class NotificationPayload
   /// Sound files must reside in `/res/raw/`.
   ///
   /// **Platforms:** Android
-  @nullable
-  String get sound;
+  String? get sound;
 
   /// The notification's title.
   ///
   /// **Platforms:** iOS, Android, Web
-  @nullable
-  String get title;
+  String? get title;
 
   /// The key to the body string in the app's string resources to use to localize
   /// the body text to the user's current localization.
@@ -141,8 +131,7 @@ abstract class NotificationPayload
   /// [String Resources](http://developer.android.com/guide/topics/resources/string-resource.html)      * for more information.
   ///
   /// **Platforms:** iOS, Android
-  @nullable
-  String get bodyLocKey;
+  String? get bodyLocKey;
 
   /// Variable string values to be used in place of the format specifiers in
   /// `body_loc_key` to use to localize the body text to the user's current
@@ -161,16 +150,14 @@ abstract class NotificationPayload
   /// for more information.
   ///
   /// **Platforms:** iOS, Android
-  @nullable
-  String get bodyLocArgs;
+  String? get bodyLocArgs;
 
   /// Action associated with a user click on the notification. If specified, an
   /// activity with a matching Intent Filter is launched when a user clicks on the
   /// notification.
   ///
   ///   * **Platforms:** Android
-  @nullable
-  String get clickAction;
+  String? get clickAction;
 
   /// The key to the title string in the app's string resources to use to localize
   /// the title text to the user's current localization.
@@ -186,8 +173,7 @@ abstract class NotificationPayload
   /// for more information.
   ///
   /// **Platforms:** iOS, Android
-  @nullable
-  String get titleLocKey;
+  String? get titleLocKey;
 
   /// Variable string values to be used in place of the format specifiers in
   /// `title_loc_key` to use to localize the title text to the user's current
@@ -206,6 +192,5 @@ abstract class NotificationPayload
   /// for more information.
   ///
   /// **Platforms:** iOS, Android
-  @nullable
-  String get titleLocArgs;
+  String? get titleLocArgs;
 }

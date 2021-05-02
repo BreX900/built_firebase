@@ -11,9 +11,7 @@ class GeoPointConfig {
     this.type = GeoPoint,
     this.latitudeName = 'latitude',
     this.longitudeName = 'longitude',
-  })  : assert(type != null),
-        assert(latitudeName != null),
-        assert(longitudeName != null);
+  });
 }
 
 /// Built [SerializerPlugin] to convert the data received from the cloud_firestore
@@ -30,7 +28,7 @@ class FirestoreSerializerPlugin implements SerializerPlugin {
   });
 
   @override // (GeoPoint) -> Value -> _ | _ -> Json -> _
-  Object beforeSerialize(Object object, FullType specifiedType) {
+  Object? beforeSerialize(Object? object, FullType specifiedType) {
     if (object is DateTime && specifiedType.root == DateTime) {
       return object.toUtc();
     }
@@ -38,7 +36,7 @@ class FirestoreSerializerPlugin implements SerializerPlugin {
   }
 
   @override // _ -> Value -> (Map) | _ -> Json -> _
-  Object afterSerialize(Object object, FullType specifiedType) {
+  Object? afterSerialize(Object? object, FullType specifiedType) {
     if (object is int && specifiedType.root == DateTime) {
       return fs.Timestamp.fromMicrosecondsSinceEpoch(object);
     } else if (object is Iterable && specifiedType.root == geoPointConfig.type) {
@@ -51,7 +49,7 @@ class FirestoreSerializerPlugin implements SerializerPlugin {
   }
 
   @override // _ -> Value -> _ | (FIRESTORE -> MAP) -> Json -> _
-  Object beforeDeserialize(Object object, FullType specifiedType) {
+  Object? beforeDeserialize(Object? object, FullType specifiedType) {
     if (object is fs.Timestamp && specifiedType.root == DateTime) {
       return object.microsecondsSinceEpoch;
     } else if (object is fs.GeoPoint && specifiedType.root == geoPointConfig.type) {
@@ -66,14 +64,14 @@ class FirestoreSerializerPlugin implements SerializerPlugin {
   }
 
   @override // _ -> Value -> _ | _ -> Json -> (GeoPoint)
-  Object afterDeserialize(Object object, FullType specifiedType) {
+  Object? afterDeserialize(Object? object, FullType specifiedType) {
     if (object is DateTime && specifiedType.root == DateTime) {
       return object.toLocal();
     }
     return object;
   }
 
-  T _serializeValue<T>(Iterator<dynamic> iterator, String name) {
+  T? _serializeValue<T>(Iterator<dynamic> iterator, String name) {
     if ((iterator..moveNext()).current == name) {
       final value = (iterator..moveNext()).current;
       return value is T ? value : null;

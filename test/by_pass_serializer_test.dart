@@ -1,8 +1,8 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:pure_extensions/built_extensions.dart';
-import 'package:test/test.dart';
 
 void main() {
   group('UnSerializer tests', () {

@@ -1,7 +1,7 @@
 import 'package:built_firebase/firestore.dart';
 import 'package:built_value/serializer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' as fs;
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('FirestoreSerializerPlugin tests', () {
